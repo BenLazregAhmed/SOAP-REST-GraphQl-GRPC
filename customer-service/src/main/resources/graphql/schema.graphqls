@@ -1,0 +1,18 @@
+type Query {
+    customersList:[Customer],
+    customerById(id:Int):Customer
+}
+type Mutation{
+    saveCustomer(customer:CustomerReq):Customer
+}
+input CustomerReq{
+    firstName:String,
+    lastName:String,
+    email:String
+}
+type Customer {
+    id:Int,
+    firstName:String,
+    lastName:String,
+    email:String
+}

@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_package = "net.ahmed.customer_service.stub";
+
+service CustomerService{
+    rpc GetAllCustomers(GetAllCustomersRequest)returns (GetAllCustomersResponse);
+    rpc GetCustomerById(GetCustomerByIdRequest)returns (GetCustomerByIdResponse);
+    rpc SaveCustomer(SaveCustomerRequest)returns (SaveCustomerResponse);
+}
+
+message GetAllCustomersRequest{}
+
+message GetAllCustomersResponse{
+    repeated Customer customers = 1;
+}
+
+message GetCustomerByIdRequest{
+    int64 id=1;
+}
+
+message GetCustomerByIdResponse{
+    Customer customer = 1;
+}
+
+message SaveCustomerRequest{
+    CustomerRequest customer=1;
+}
+
+message SaveCustomerResponse{
+    Customer customer = 1;
+}
+
+message CustomerRequest{
+    string first_name=1;
+    string last_name=2;
+    string email=3;
+}
+
+message Customer{
+    int64 id=1;
+    string first_name=2;
+    string last_name=3;
+    string email=4;
+}

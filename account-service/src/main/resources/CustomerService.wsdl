@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://web.customer_service.ahmed.net/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CustomerWS" targetNamespace="http://web.customer_service.ahmed.net/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://web.customer_service.ahmed.net/" elementFormDefault="unqualified" targetNamespace="http://web.customer_service.ahmed.net/" version="1.0">
+
+  <xs:element name="customersList" type="tns:customersList"/>
+
+  <xs:element name="customersListResponse" type="tns:customersListResponse"/>
+
+  <xs:element name="getCustomerById" type="tns:getCustomerById"/>
+
+  <xs:element name="getCustomerByIdResponse" type="tns:getCustomerByIdResponse"/>
+
+  <xs:element name="saveCustomer" type="tns:saveCustomer"/>
+
+  <xs:element name="saveCustomerResponse" type="tns:saveCustomerResponse"/>
+
+  <xs:complexType name="getCustomerById">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCustomerByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:long"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customersList">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="customersListResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer" type="tns:customerReq"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="customerReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="saveCustomerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:customer"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="customersListResponse">
+    <wsdl:part element="tns:customersListResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerById">
+    <wsdl:part element="tns:getCustomerById" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="customersList">
+    <wsdl:part element="tns:customersList" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveCustomer">
+    <wsdl:part element="tns:saveCustomer" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCustomerByIdResponse">
+    <wsdl:part element="tns:getCustomerByIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="saveCustomerResponse">
+    <wsdl:part element="tns:saveCustomerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerSoapService">
+    <wsdl:operation name="getCustomerById">
+      <wsdl:input message="tns:getCustomerById" name="getCustomerById">
+    </wsdl:input>
+      <wsdl:output message="tns:getCustomerByIdResponse" name="getCustomerByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="customersList">
+      <wsdl:input message="tns:customersList" name="customersList">
+    </wsdl:input>
+      <wsdl:output message="tns:customersListResponse" name="customersListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCustomer">
+      <wsdl:input message="tns:saveCustomer" name="saveCustomer">
+    </wsdl:input>
+      <wsdl:output message="tns:saveCustomerResponse" name="saveCustomerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerWSSoapBinding" type="tns:CustomerSoapService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCustomerById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCustomerById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCustomerByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="customersList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="customersList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="customersListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCustomer">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="saveCustomer">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="saveCustomerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerWS">
+    <wsdl:port binding="tns:CustomerWSSoapBinding" name="CustomerSoapServicePort">
+      <soap:address location="http://localhost:8090/services/CustomerService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
